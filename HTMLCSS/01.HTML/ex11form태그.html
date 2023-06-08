@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- form태그 -->
+    <!-- 
+        1. placeholder : 미리보기 텍스트
+        2. autofocus : 커서를 자동으로 해당 input 태그에
+        3. maxlength : 입력할 수 있는 글자 수 제한
+        4. name : 보내는 곳과 받는 곳에서 해당 정보를 구분하기 위한 key
+        5. value : 해당 정보에 대한 값
+     -->
+
+
+
+    <form action="#" method="get">
+        ID : <input type="text" placeholder="ID를 입력하세요" name="userId" autofocus>
+        <br/> 
+        PW : <input type="password" maxlength="10" name="userPw">
+        <br/>
+        주소 : <input type="text" name="userAddr">
+        <br/>
+    
+        <br><br>
+        <!-- checkbox -->
+        점심으로 먹고 싶은 메뉴는?<br/>
+        <input type="checkbox" name="menu" value="한식"> 한식
+        <input type="checkbox" name="menu" value="중식"> 중식
+        <input type="checkbox" name="menu" value="양식"> 양식
+        <input type="checkbox" name="menu" value="일식"> 일식
+        <input type="checkbox" name="menu" value="분식"> 분식
+        <br><br>
+        <!-- radio button -->
+        <input type="radio" name="gender" value="male"> 남성
+        <input type="radio" name="gender" value="female"> 여성
+        <br><br>
+        <!-- selector -->
+        혈액형을 선택하세요
+        <select name="" id="">
+            <option value="A">A형</option>
+            <option value="B">B형</option>
+            <option value="AB">AB형</option>
+            <option value="O">O형</option>
+        </select>
+        <br><br>
+        <!-- text area -->
+        <textarea cols="30" rows="5"></textarea>
+        <!-- 그 외 여러가지 태그들 -->
+        <input type="file"><br/>
+        <input type="color"><br/>
+        <input type="number"><br/>
+        <input type="range"><br/>
+        <input type="date"><br/>
+
+        <input type="submit" value="제출">
+        <input type="reset" value="reset">
+    </form>
+</body>
+</html>

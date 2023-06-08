@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1. 전체 선택자 : 문서 내의 모든 요소를 선택
+                기호 : *
+        */
+        *{
+            /* 글씨체는 하나로 통일하는 경우가 많음
+            전체 선택자를 많이 사용합니다. */
+            color:brown;
+        }
+        /* 2. 태그 선택자 : 특정 태그를 선택
+                기호 : 태그의 이름을 사용
+        */
+        li{
+            color:red
+        }
+        /* 
+            선택자들을 구분해서 사용해야될 경우
+            : 클래스/아이디 라는 개념에 접근해보자
+
+            클래스 : 중복사용이 가능
+            아이디 : 중복사용이 불가능
+        */
+        /* 3. 클래스 선택자
+            오늘 뭐먹지에 해당하는 li태그들을 디자인
+            : lightgreen으로 색상을 변경
+
+            기호 : .클래스이름
+        */
+        .food{
+            color: lightgreen;
+        }
+        /* 
+        연어라는 li.food인 요소에 빨간색 배경화면
+        4. 아이디 선택자
+            기호 : #아이디이름
+
+            중복이 불가능, 한 문서당 그 아이디 1번만
+            고유한 디자인으로 들어가야할 경우 사용
+        */
+        #salmon{
+            background-color: red;
+        }
+
+
+
+        </style>
+    </head>
+<body>
+    <h1>웹 페이지를 꾸며주는 스타일 언어</h1>
+    <ul>
+        <li>css 기본 구조</li>
+        <li>css 선택자</li>
+        <li>css 스타일</li>
+
+    </ul>
+    <h1>오늘 뭐 먹지</h1>
+    <ul>
+        <li class="food"><span id="salmon">연어</span></li>
+        <li class="food">참치</li>
+        <li class="food">치킨</li>
+    </ul>
+</body>
+</html>
