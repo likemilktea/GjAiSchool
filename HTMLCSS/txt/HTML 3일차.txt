@@ -1,0 +1,25 @@
+/* 마우스를 올렸을 때 */
+:hover
+/* 마우스를 클릭했을 때 */
+:active
+
+/* 디스플레이 block,inline,none */ 
+/* block속성에만 width height 적용 가능 */
+display: block;
+
+/* 마진은 중첩됨 */
+/* 패딩은 백그라운드 영역이 늘어나나 콘텐츠 크기에는 영향x */
+
+/* 모서리를 둥글게 */
+border-radius: 50px;
+
+/* 플렉스 콘테이너와 아이템 필요 */
+/* 플렉스 선언으로 콘테이너 설정 자동으로 자식들은 아이템*/
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+
+<!-- 외부 css 적용하는 코드 작성하기 -->
+<link rel="stylesheet" href="ex16외부.css">

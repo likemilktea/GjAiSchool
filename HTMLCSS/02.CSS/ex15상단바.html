@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            
+            background-color: whitesmoke;
+        }
+        .box1{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            flex-basis: 10%;
+        }
+        .box2{
+            display: flex;
+            flex-direction: row;
+            flex-basis: 70%;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .box2>a:hover{
+            background-color: black;
+            color: white;
+        }
+        .box2>a{
+            margin-right: 2%;
+        }
+        .box3{
+            display: flex;
+            flex-direction: row;
+            flex-basis: 10%;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .box3>a{
+            font-size: 10px;
+            margin-right: 2%;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box1">
+            <h5>SMHRD</h5>
+        </div>
+        <div class="box2">
+            <a href="#">메뉴</a> 
+            <a href="#">베스트</a> 
+            <a href="#">뉴스</a> 
+        </div>
+        <div class="box3">
+            <a href="#">로그인</a>
+            <a href="#">회원가입</a>
+         
+        </div>
+    </div>
+    </div>
+</body>
+</html>

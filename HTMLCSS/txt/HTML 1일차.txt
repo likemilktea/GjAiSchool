@@ -12,5 +12,3 @@ alt L O 로 라이브 서버 실행
 
 * Web Client, Web Server, 요청, 응답
 자연 ----> 스테이크 요청 ----> 서빙
-
-- HTML
