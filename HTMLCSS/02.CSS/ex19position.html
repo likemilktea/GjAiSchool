@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+
+        #parent{
+            width: 200px;
+            height: 600px;
+            background-color: lightgray;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+        }
+        .child1{
+            background-color: #ff4949;
+            /* ficed : 상위 문서를 기준으로 움직이는 속성
+            +이동한 위치에서 고정
+            +스크롤 위아래 움직일 때 따라다님
+             */
+            position: fixed;
+            top: 0px;
+            left: 0px;
+        }
+        .child2{
+            background-color: #f9ca24;
+        }
+        .child3{
+            background-color: #0984e3;
+        }
+        #child4{
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div class="box child1"></div>
+        <div class="box child2" id="child2"></div>
+        <div class="box child3" id="child3"></div>
+        <div id="child4">
+            <a href="#child2">Top</a>
+        </div>
+    </div>
+</body>
+</html>
