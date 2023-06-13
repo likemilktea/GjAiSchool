@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- JavaScript -->
+    <script>
+        // 조건문
+        // - 주어진 조건을 비교 또는 판단하여 결과를 얻는 구문
+
+        // 단순 if문
+        // if(조건문){실행문}
+        let num = 10;
+        let num2 = 5;
+
+        if(num === 10 && num2 > 1){
+            console.log("조건이 만족되었습니다!");
+        }
+
+        // if~else문
+        // if(조건문){실행문} else{실행문}
+        let userId = prompt("ID를 입력하시오.");
+        let userPw = prompt("PW를 입력하시오.");
+
+        let id = "solandhiki";
+        let pw = "qwerty"
+        if(userId === id && userPw === pw){// 조건이 만족되었을 때
+            console.log(id+"님 환영합니다.");
+        }
+        else{// 위 조건이 만족되지 않았을 때
+            alert("ID 또는 PW가 일치하지 않습니다.");
+        }
+    </script>
+</body>
+</html>

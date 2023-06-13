@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- JavaScript -->
+    <script>
+        // switch~case문 : 비교할 값으로 판단하여 실행하는 구문
+        // switch (key) { :조건값
+        //     case value: :조건값과 비교할 값
+        //         break;
+        //     default: : 비교할 값들이 모두 일치하지 않은 경우 실행하는 구문
+        //         break;
+        // }
+        // 실습문제)월을 입력한 후, 해당 월에 맞는 계절을 출력하는 코드를 구현하시오
+        const month = parseInt(prompt("몇월인가요?"));
+        let season = null;
+        switch (month) {
+            case 3: case 4 : case 5:
+                season = "봄🌸";
+                break;
+                case 6: case 7 : case 8:
+                season = "여름😎"
+                break;
+                case 9: case 10 : case 11:
+                season = "가을🪶"
+                break;
+            default:
+                season = "겨울❄️"
+                break;
+        }
+        console.log(`${month}월은 ${season}입니다.`)
+    </script>
+</body>
+</html>

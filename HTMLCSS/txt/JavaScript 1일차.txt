@@ -92,3 +92,4 @@ document.writeln(parseInt(5/2));
 - 불일치하는 비교식을 만들 것인지
 
 6. 삼항연산자 : 비교식 ? true : false
+

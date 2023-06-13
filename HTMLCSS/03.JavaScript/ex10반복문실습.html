@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- JavaScript -->
+    <script>
+        // 실습문제) 두 숫자를 입력한 후, 
+        // 해당 범위 숫자를 모두 출력하는 코드를 구현하시오.
+        let start = 1
+        let end = 15
+        for (let i = start; i <= end; i++) {
+            console.log(i);
+            
+        }
+        // 실습문제) 순차적으로 출력되는 모든 숫자를 더한 결과를 출력하는
+        // 코드를 구현하시오.
+        start = 1;
+        end = 100;
+        let sum = 0;
+        for (let i = start; i <= end; i++) {
+            sum+=i
+        }
+        console.log(`${start}에서 ${end}까지의 합은 ${sum}입니다.`);
+    </script>
+</body>
+</html>

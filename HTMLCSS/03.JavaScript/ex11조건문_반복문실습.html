@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- JavaScript -->
+    <script>
+        // 실습문제) 1~30까지의 숫자 중 1의 자리가 3,6,9인 경우
+        // "짝!"을 출력하는 코드를 구현하시오.
+        start=1;
+        end=30;
+        // for (let i = start; i < end; i++) {
+        //     if(i<10){
+        //         switch(i){
+        //             case 3:
+        //             case 6:
+        //             case 9:
+        //                 console.log("짝");
+        //                 break;
+        //             default:
+        //                 console.log(i);
+        //                 break;
+        //         }
+        //     }else{
+        //         let j = parseInt(i/10)*10;
+        //         let k = i-j
+        //         switch(k){
+        //             case 3:
+        //             case 6:
+        //             case 9:
+        //                 console.log("짝");
+        //                 break;
+        //             default:
+        //                 console.log(i);
+        //                 break;
+        //         }
+        //     }
+        // }
+        for (let i = start; i < end; i++) {
+            let j = i % 10;
+            switch (j) {
+                case 3:case 6:case 9:
+                    console.log("짝");
+                    break;
+            
+                default:
+                    console.log(i);
+                    break;
+            }
+        }
+
+
+    </script>
+</body>
+</html>
