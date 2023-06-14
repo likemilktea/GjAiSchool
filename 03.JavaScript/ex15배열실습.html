@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- JavaScript -->
+    <script>
+        let fruits = ["apple", "avocado", "banana", "blueberry", "cherry", "dragon fruit",
+                "fig", "grape", "kiwi", "lime", "mango", "orange", "oriental melon", "pear",
+                "peach", "pineapple", "shine muscat", "strawberry", "tomato",
+                "water melon", "yuja"];
+        fruits.pop();
+
+        fruits.push("grapefruit");
+
+        fruits.push("cherry tomato");
+        fruits.push("pine nut");
+        fruits.push("korean blackberry");
+
+        console.log(fruits.includes('orange'));
+
+        console.log(fruits.includes('kiwi'));
+
+        fruits.splice(fruits.indexOf("water melon"),1,"melon")
+
+        fruits.splice(fruits.indexOf("lime"),3)
+
+        fruits.splice(fruits.indexOf("shine muscat"))
+
+        let newArr = []
+        // for (let i = 0; i < fruits.length; i++) {
+        //     if(fruits[i][0]==='p'){
+        //         newArr.push(fruits[i])
+        //     }
+        // }
+        newArr = fruits.slice(fruits.indexOf("pear"),fruits.indexOf("pineapple")+1);
+        console.log(newArr);
+        console.log(fruits);
+        
+
+        
+    </script>
+</body>
+</html>
