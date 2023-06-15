@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- JavaScript -->
+    <script>
+        // 10개의 랜덤 숫자를 가진 배열을 생성하기(범위는 1~100)
+        let arr = [parseInt(Math.random() * 100 + 1)];
+        while (arr.length !== 10) {
+            let check = true;
+            randomNum = parseInt(Math.random() * 100 + 1)
+            for (let i = 0; i < arr.length; i++) {
+                if (randomNum === arr[i]){
+                    check = false;
+                }                
+            }
+            if (check) {
+                arr.push(randomNum);
+            }
+        }
+        console.log(arr);
+
+        // 10개의 랜덤 숫자가 저장된 배열 데이터 중 홀수만 출력해보기
+        let count = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 === 1){
+                console.log(arr[i]);
+                count++;
+            }            
+        }
+        console.log(`홀수의 갯수는 : ${count}`);
+
+        // 문제) 배열에 저장된 숫자 중에서 가장 큰 숫자만 출력해보기
+        let maxNum=arr[0];
+        for (let i = 0; i < arr.length; i++) {
+            if(arr[i] > maxNum){
+                maxNum = arr[i]
+            }
+        }
+        console.log(maxNum);
+        maxNum = Math.max.apply(null,arr)
+        console.log(`Math.max.apply 사용 : ${maxNum}`);
+    </script>
+</body>
+</html>

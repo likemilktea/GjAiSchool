@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/ex19함수실습_반환.js"></script>
+    <script>
+        let inputNum1 = parseInt(prompt("첫 번째 숫자 입력 : "));
+        let choice = prompt("1.더하기 2.빼기 3.곱하기 4.나누기");
+        let inputNum2 = parseInt(prompt("두 번째 숫자 입력 : "));
+        // return문 : 함수를 실행한 위치로 결과값을 던져준다.
+        
+        let result = calculator(inputNum1,choice,inputNum2);
+        console.log(result);
+    </script>
+</body>
+</html>

@@ -35,4 +35,7 @@ arr.pop();
 2. 특정 위치 데이터를 삭제하는 기능 배열변수.splice(삭제할 데이터의 위치, 삭제할 갯수)
 arr.splice(2,3);
 
+배열변수.slice(시작인덱스, 끝인덱스) : 배열 내 데이터를 잘라낸 후 새로운 배열로 반환해줌
+arr.slice(1,5) -> 1~4까지의 데이터만 접근
+끝인덱스의 데이터까지 포함해서 가져와야할 경우에는 끝 인덱스에 +1 해줘야 한다.
 newArr = fruits.slice(fruits.indexOf("pear"),fruits.indexOf("pineapple")+1);

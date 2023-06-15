@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- JavaScript -->
+    <script>
+        // 문제) 3개의 숫자를 입력받은 후, 더한 결과를 출력하는 함수를 구현해보기
+        function addNumber(num1,num2){
+            result = num1+num2;
+            return result;
+        }
+        // let num1 = parseInt(prompt("값 1 >> "));
+        // let num2 = parseInt(prompt("값 2 >> "));
+
+        // console.log(addNumber(num1,num2,num3));
+
+        // 문제) 빼기, 곱하기, 나누기를 연산해주는 함수 구현해보기
+        function subNumber(num1,num2){
+            result = num1-num2;
+            return result
+        }
+        function mulNumber(num1,num2){
+            result = num1*num2;
+            return result
+        }
+        function divNumber(num1,num2){
+            result = num1/num2;
+            return result
+        }
+        // console.log(subNumber(num1,num2));
+        // console.log(mulNumber(num1,num2));
+        // console.log(divNumber(num1,num2));
+
+        // 계산기 프로그램 만들기
+        // 1. 두 수를 입력받는다.
+        // 2. 어떤 연산을 할 것인지 선택한다.
+        // 3. 선택한 연산에 따른 결과가 출력된다.
+        let inputNum1 = parseInt(prompt("첫 번째 숫자 입력 : "));
+        let choice = prompt("1.더하기 2.빼기 3.곱하기 4.나누기");
+        let inputNum2 = parseInt(prompt("두 번째 숫자 입력 : "));
+        let result = 0;
+            switch (choice) {
+                case '1':
+                    console.log(addNumber(inputNum1, inputNum2));
+                    break;
+                case '2':
+                    console.log(subNumber(inputNum1, inputNum2));
+                    break;
+                case '3':
+                    console.log(mulNumber(inputNum1, inputNum2));
+                    break;
+                case '4':
+                    console.log(divNumber(inputNum1, inputNum2));
+                    break;
+                default:
+                    console.log(result);
+                    break;
+        }
+        
+
+    </script>
+</body>
+</html>
