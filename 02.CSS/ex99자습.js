@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentElement = null;
     let randomCircle = null;
     let scoreElement = document.getElementById('score'); //점수를 가리키는 속성
+    let initScore = document.getElementById('initScore');
     let speed = 2000;
     let score = 0;
     let scoreText = null;
@@ -87,6 +88,10 @@ document.addEventListener('DOMContentLoaded', function () {
         for(let element of emptyElements){
             element.addEventListener('click',failed);
         }
+        initScore.addEventListener('click', function () {
+            score = 0;
+            scoreElement.innerHTML = score;
+        });
         
         // 초기화를 위한 이전 셀 선정
         currentElement = nowElement;
@@ -115,4 +120,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
     setInterval(onGame, speed);
+    
 });
