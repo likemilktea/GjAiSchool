@@ -42,6 +42,10 @@ main>div{
     background-color: whitesmoke;
 }
 main>div>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -50,10 +54,21 @@ main>div>div{
     box-sizing: border-box;
     transition: background-color 0.5s ease;
 }
-.circle:hover{
-    background-color: rgb(163, 163, 163);
+main>div>div>p{
+    position: relative;
+    animation: slide-up 2s infinite;
 }
-
+/* .circle:hover{
+    background-color: rgb(163, 163, 163);
+} */
+@keyframes slide-up {
+    0% {
+      top: 0;
+    }
+    100% {
+      top: -50px; /* 텍스트가 올라가는 거리 설정 */
+    }
+  }
 
 
 /* footer */
