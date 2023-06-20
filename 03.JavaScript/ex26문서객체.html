@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="tit">HTML 요소에 접근해보기!</h1>
+
+    <p id="msg">HTML 문서에 정의된 요소들을 제어해보자!</p>
+
+    <script>
+        // DOM(Document Object Modle : 문서객체모델)
+        // - 웹 문서에 정의된 태그를 JavaScript에서 접근할 수 있도록 객체로 변환해주는 모델
+
+        // HTML문서 내에 있는 요소에 접근하려면
+        // document : 현재 문서
+        //  . : 현재문서 내에 있는 속성 또는 함수에 접근
+        // getElementById() : 요소의 id속성값을 이용해서 요소객체에 접근
+        const tit = document.getElementById("tit");
+
+        console.log(`h1요소 접근 결과 : ${tit}`);
+        
+        // 접근한 요소의 컨텐츠에 접근하려면
+        // 요소객체.innerText : 요소의 컨텐츠만에 접근(문자열)
+        // 요소객체.innetHTML : 요소의 컨텐츠+자식요소에 접근(문자열)
+        console.log(tit.innerText);
+        console.log(tit.innerHTML);
+
+        // 접근한 요소의 컨텐츠를 업데이트(초기화)하려면
+        // 요소객체.innerText = 수정할 데이터
+        tit.innerText = tit.innerText+"요소에 접근 또 성공!"
+        
+        // 요소의 컨텐츠를 업데이트할 때 새로운 요소를 반영하고 싶다면
+        // 요소객체.innerHTML = 요소+데이터 형태
+        tit.innerHTML = "<a href='https://www.naver.com'>요소에 접근 성공</a>"
+
+        // a요소의 글자색을 파란색으로 변경을 하려면
+        // HTML Collection : 유사배열
+        const aTag = tit.getElementsByTagName("a")[0];
+        console.log(aTag);
+
+        // 요소객체.style.스타일속성 = "변경할 값";
+        aTag.style.color="blue";
+        aTag.style.textDecoration="none";
+        aTag.style.fontSize="16px";
+
+        // 1. p요소의 객체에 접근한 후, 내용을 변경
+        const msg = document.getElementById("msg");
+        msg.innerText = "변경성공!";
+
+        // 2. p요소의 컨텐츠 스타일을 변경해보기
+        msg.style.fontSize="20px";
+        msg.style.border="2px solid red";
+    </script>
+</body>
+</html>

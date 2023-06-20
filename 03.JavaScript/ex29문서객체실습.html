@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>카운팅 기능 만들어보기</h1>
+    <div>count : <span id="cnt">15</span></div>
+    <button id="add">증가</button>
+    <button id="sub">감소</button>
+
+    <script>
+        const cnt=document.getElementById("cnt")
+        const add=document.getElementById("add")
+        const sub=document.getElementById("sub")
+        let count = parseInt(cnt.innerText);
+        add.addEventListener('click',()=>{
+            cnt.innerHTML=++count;
+        });
+        sub.addEventListener('click',()=>{
+            cnt.innerHTML=--count;
+        });
+    </script>
+</body>
+</html>

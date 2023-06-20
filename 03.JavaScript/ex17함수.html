@@ -22,13 +22,21 @@
 
         // 함수명(매개변수,...){}
         // - 매개변수(parameter) " 함수를 호출한 위치에서 넘겨받은 데이터를 저장하는 변수"
+        // 개수 제한은 없다.
         function print(name, age){
             console.log(`${name} 님 ${age}세 환영합니다!`);
+        }
+        
+        // 가변매개변수 : 외부로부터 몇 개으 ㅣ데이터를 받아들일지 모를 경우 사용
+        // 형식 : ...변수명
+        function print3(...values){
+            console.log(values);
         }
 
         // 선언한 함수를 사용하려면? --> 호출
         // 호출한다 -> 함수명();
         print("송솔",37);
+        print3(1,1,1,1,1,1)
     </script>
 </body>
 </html>

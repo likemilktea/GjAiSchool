@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="location.href='https://www.naver.com'">클릭</button>
+    <script>
+        // 브라우저 객체
+        // - 브라우저에서 제공해주는 객체
+        // 종류 : BOM - window, location, navigator, history, screen 
+        //      DOM - document(★★★)
+
+        // window객체 다루기
+        // 팝업창 띄우는 함수 : open(페이지 경로, 팝업창 이름, 옵션)
+        // - 옵션 : 가로크기, 세로크기, 주소창출력여부, 위치조정, ...
+        // window.open("ex22함수표현식실습.html","이모지출력창","width=500px,height=500px,top=200px,left=200px");
+
+        // location 객체 다루기
+        console.log(location.href);
+
+        // 페이지를 이동하고 싶다면
+        // location.href = "https://www.naver.com";
+    </script>
+</body>
+
+</html>

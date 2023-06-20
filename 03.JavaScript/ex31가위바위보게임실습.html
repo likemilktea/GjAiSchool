@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 3px solid black;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .container>button {
+            margin-top: 10px;
+        }
+
+        .win {
+            border: 3px solid green;
+        }
+
+        .lose {
+            border: 3px solid red;
+        }
+
+        .tie {
+            border: 3px solid black;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="box" class="win">
+            <h1>Me</h1>
+            <div id="box-me">...</div>
+            <h3 id="result-me">...</h3>
+        </div>
+        <div class="box">
+            <h1>Computer</h1>
+            <div id="box-computer">...</div>
+            <h3 id="result-computer">...</h3>
+        </div></div>
+        
+        <div class="container">
+            <button id="btn-play">Play</button>
+        </div>
+        
+        
+        <script>
+            game = ["가위", "바위", "보"];
+
+            // 랜덤
+            let me = 0;
+            let computer = 0;
+                // 승패
+            let winner = "tie";
+            function onGame() {
+                me = parseInt(Math.random() * 3);
+                computer = parseInt(Math.random() * 3);
+                if (me === computer) {
+                    winner = "tie";
+                } else if (me === 0 && computer === 2) {
+                    winner = "me";
+                } else if (me === 2 && computer === 0) {
+                    winner = "computer";
+                } else if (me > computer) {
+                    winner = "me";
+                } else {
+                    winner = "computer";
+                }
+            }
+            const btn_play = document.getElementsByTagName("button")[0];
+            const box_me = document.getElementById("box-me");
+            const result_me = document.getElementById("result-me");
+            const box_computer = document.getElementById("box-computer");
+            const result_computer = document.getElementById("result-computer");
+            const box_me_class = document.getElementsByClassName("box")[0]
+            const box_computer_class = document.getElementsByClassName("box")[1]
+            console.log(box_computer_class);
+            btn_play.addEventListener('click', () => {
+                onGame();
+                console.log(box_me_class.attributes);
+                box_me.innerText = game[me]
+                box_computer.innerText = game[computer]
+                switch(winner){
+                    case 'me':
+                        result_me.innerText = "Win";
+
+                        box_me_class.className = "win";
+                        result_computer.innerText = "Lose";
+                        box_computer_class.className = "lose";
+
+                        break;
+                    case 'computer':
+                        result_me.innerText = "Lose";
+                        box_me_class.className = "lose";
+                        result_computer.innerText = "Win";
+                        box_computer_class.className ="win";
+                        break;
+                    default:
+                        result_me.innerText = "Tie";
+                        box_me_class.className = "tie";
+                        result_computer.innerText = "Tie";
+                        box_computer_class.className = "tie";
+                        break;
+
+                }
+
+            });
+
+    </script>
+
+</body>
+
+</html>

@@ -14,3 +14,8 @@ Python : 최영화 선생님
 마소 계정 일련번호 : aischool182
     아이디 : aischool182@gwangjuaischool.onmicrosoft.com
     비밀번호 : ais0607!
+
+leetcode
+programmers
+백준
+hackerRank

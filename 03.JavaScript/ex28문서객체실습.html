@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="tit">클릭 한 번 해볼까요?</h1>
+    <div id="content"></div>
+    
+    <button id="btnH1">h1태그 생성</button>
+    <button id="btnA">a태그 생성</button>
+    <button id="btnUl">ul태그 생성</button>
+    <script>
+        // 1. 사용할 요소의 객체를 모두 변수에 저장하기
+        const tit = document.getElementById('tit')
+        const content = document.getElementById('content')
+        const btnH1 = document.getElementById('btnH1')
+        const btnA = document.getElementById('btnA')
+        const btnUl = document.getElementById('btnUl')
+        
+        btnH1.addEventListener('click',()=>{
+            tit.innerText="DOM 활용해보기!";
+        });
+        btnA.addEventListener('click',()=>{
+            content.innerHTML = "<a href='https://google.com'>Google로 가보자!</a>"
+        });
+        btnUl.addEventListener('click',()=>{
+            // content.innerHTML += "<li>HTML</li>"
+            // content.innerHTML += "<li>CSS</li>"
+            // content.innerHTML += "<li>Javascript</li>"
+            content.innerHTML += `
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>Javascript</li>
+                </ul>
+            `;
+        });
+
+    </script>
+</body>
+</html>
