@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,77 +52,73 @@
             <h1>Computer</h1>
             <div id="box-computer">...</div>
             <h3 id="result-computer">...</h3>
-        </div></div>
-        
-        <div class="container">
-            <button id="btn-play">Play</button>
         </div>
-        
-        
-        <script>
-            game = ["가위", "바위", "보"];
+    </div>
 
-            // 랜덤
-            let me = 0;
-            let computer = 0;
-                // 승패
-            let winner = "tie";
-            function onGame() {
-                me = parseInt(Math.random() * 3);
-                computer = parseInt(Math.random() * 3);
-                if (me === computer) {
-                    winner = "tie";
-                } else if (me === 0 && computer === 2) {
-                    winner = "me";
-                } else if (me === 2 && computer === 0) {
-                    winner = "computer";
-                } else if (me > computer) {
-                    winner = "me";
-                } else {
-                    winner = "computer";
-                }
+    <div class="container">
+        <button id="btn-play">Play</button>
+    </div>
+
+
+    <script>
+        // 0가위 1바위 2보
+        game = ["가위", "바위", "보"];
+
+        // 랜덤
+        let me = 0;
+        let computer = 0;
+        // 승패
+        let winner = "tie";
+        function onGame() {
+            me = parseInt(Math.random() * 3);
+            computer = parseInt(Math.random() * 3);
+            if (me === computer) {
+                winner = "tie";
+            } else if (me === 0 && computer === 2) {
+                winner = "me";
+            } else if (me === 2 && computer === 0) {
+                winner = "computer";
+            } else if (me > computer) {
+                winner = "me";
+            } else {
+                winner = "computer";
             }
-            const btn_play = document.getElementsByTagName("button")[0];
-            const box_me = document.getElementById("box-me");
-            const result_me = document.getElementById("result-me");
-            const box_computer = document.getElementById("box-computer");
-            const result_computer = document.getElementById("result-computer");
-            const box_me_class = document.getElementsByClassName("box")[0]
-            const box_computer_class = document.getElementsByClassName("box")[1]
-            console.log(box_computer_class);
-            btn_play.addEventListener('click', () => {
-                onGame();
-                console.log(box_me_class.attributes);
-                box_me.innerText = game[me]
-                box_computer.innerText = game[computer]
-                switch(winner){
-                    case 'me':
-                        result_me.innerText = "Win";
-
-                        box_me_class.className = "win";
-                        result_computer.innerText = "Lose";
-                        box_computer_class.className = "lose";
-
-                        break;
-                    case 'computer':
-                        result_me.innerText = "Lose";
-                        box_me_class.className = "lose";
-                        result_computer.innerText = "Win";
-                        box_computer_class.className ="win";
-                        break;
-                    default:
-                        result_me.innerText = "Tie";
-                        box_me_class.className = "tie";
-                        result_computer.innerText = "Tie";
-                        box_computer_class.className = "tie";
-                        break;
-
-                }
-
-            });
+        }
+        // 승패를 표시하는 함수
+        function winnerTextOut(me, me_class, com, com_class) {
+            result_me.innerText = me; // 사용자의 텍스트
+            box_me_class.className = me_class; // 사용자의 박스 색깔
+            result_computer.innerText = com; // 컴퓨터의 텍스트
+            box_computer_class.className = com_class; // 컴퓨터의 박스 색깔
+        }
+        //게임에 필요한 변수 초기화
+        const btn_play = document.getElementsByTagName("button")[0];
+        const box_me = document.getElementById("box-me");
+        const result_me = document.getElementById("result-me");
+        const box_computer = document.getElementById("box-computer");
+        const result_computer = document.getElementById("result-computer");
+        const box_me_class = document.getElementsByClassName("box")[0]
+        const box_computer_class = document.getElementsByClassName("box")[1]
+        // 시작버튼 클릭시 함수 실행
+        btn_play.addEventListener('click', () => {
+            onGame();
+            // 플레이어와 컴퓨터 가위바위보 텍스트 출력
+            box_me.innerText = game[me]
+            box_computer.innerText = game[computer]
+            // 승패 판별
+            switch (winner) {
+                case 'me':
+                    winnerTextOut('Win', 'win box', 'lose', 'lose box')
+                    break;
+                case 'computer':
+                    winnerTextOut('Lose', 'lose box', 'Win', 'win box')
+                    break;
+                default:
+                    winnerTextOut('Tie', 'tie box', 'Tie', 'tie box')
+                    break;
+            }
+        });
 
     </script>
-
 </body>
-
 </html>
