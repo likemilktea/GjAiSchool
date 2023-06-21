@@ -62,7 +62,7 @@
 
     <script>
         // 0가위 1바위 2보
-        game = ["가위", "바위", "보"];
+        let game = ["가위", "바위", "보"];
 
         // 랜덤
         let me = 0;
@@ -102,7 +102,7 @@
         // 시작버튼 클릭시 함수 실행
         btn_play.addEventListener('click', () => {
             onGame();
-            // 플레이어와 컴퓨터 가위바위보 텍스트 출력
+            // 플레이어와 컴퓨터 랜덤으로 선택된 가위바위보 텍스트 출력
             box_me.innerText = game[me]
             box_computer.innerText = game[computer]
             // 승패 판별
