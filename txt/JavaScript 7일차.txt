@@ -1,0 +1,7 @@
+숫자맞추기 게임
+
+버튼 비활서화
+play_button.disabled=true;
+
+textarea value값 조정
+user_input.value = "";
