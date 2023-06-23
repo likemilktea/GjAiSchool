@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 영화정보를 보여줄 태그 -->
+    <div id="movie-info"></div>
+
+    <button id="req-button">데이터요청</button>
+    <!-- jQuery 파일 불러오기 -->
+    <script src="./js/jquery-3.7.0.js"></script>
+    <script>
+        // $ : jQuery객체
+        // ajax() : 비동기 통신을 사용하기 위한 함수(메서드)
+        // url : 요청할 서버의 주소 ex)https://www.naver.com
+        // success : 서버의 응답이 왔을 때 살행하는 함수
+        // error : 서버의 요청 또는 응답에 오류가 발생했을 때 실행하는 함수
+        const reqButton = document.getElementById('req-button');
+        const movieInfo = document.getElementById('movie-info');
+        const movieURL = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=20230621"
+        
+        // 영화정보서버에서 데이터를 요청하는 기능
+        const getMovieData = () => {
+            $.ajax({
+                url: movieURL,
+                success: (result) => {
+                    alert("요청성공!")
+                    console.log(result);
+                    // console.log(result.boxOfficeResult.dailyBoxOfficeList[0].movieNm);
+                    let movieLIst = result.boxOfficeResult.dailyBoxOfficeList;
+                    // 박스오피스순위, 영화명, 개봉일자 정보를 가져온 후 웹 페이지에 출력해보기
+                    let ol = document.createElement("ol");
+                    
+                    for (let i = 0; i < movieLIst.length; i++) {
+                        // console.log(movieLIst[i].rank, movieLIst[i].movieNm, movieLIst[i].openDt);
+                        let li = document.createElement("li");
+                        let content = document.createTextNode(`${movieLIst[i].movieNm} (${movieLIst[i].openDt})`);
+                        // 속성노드 생성
+                        let idAttr = document.createAttribute("id");
+                        // 속성노드에 값 초기화
+                        idAttr.value= `list${i+1}`;
+                        // 속성노드 --> 요소노드에 연결하기
+                        li.setAttributeNode(idAttr);
+                        li.appendChild(content);
+                        ol.appendChild(li);
+                    }
+
+                    // ul,li요소,text 생성하기
+                    // let ol = document.createElement("ol");
+                    // let li = document.createElement("li");
+                    // let content = document.createTextNode("범죄도시3");
+
+                    // 1.text --> li 붙이기
+                    // li.appendChild(content)
+                    // 2.li --> ul 붙이기
+                    // ol.appendChild(li)
+                    movieInfo.appendChild(ol)
+                },
+                error: () => {
+                    alert("요청실패!")
+                }
+            }); // end ajax
+        } // end getMovieData
+        // 데이터요청 버튼을 클릭했을 때, 영화정보서버에 데이터를 요청하는 이벤트
+        reqButton.addEventListener('click',getMovieData);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .poke-list{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .poke-card{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 200px;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+        .poke-img{
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="poke-list">
+        <!-- content 들어갈 곳 -->
+    </div> <!-- end poke-list -->
+    <script>
+        const pokeList = document.getElementsByClassName("poke-list")[0];
+        console.log(pokeList);
+        // content
+        let img_no = 1;
+        let poke_no = 1;
+        let poke_name = "이상해씨";
+        let poke_species = "풀 타입";
+        let poke_height = 0.7;
+        let poke_weight = 6.9;
+        for (let img_no = 1; img_no < 152; img_no++) {
+            pokeList.innerHTML += 
+            `<div class="poke-card">
+                <img class="poke-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${img_no}.png" alt="">
+                <span class="poke-no">${img_no}</span>
+                <span class="poke-name">${poke_name}</span>
+                <span class="poke-species">${poke_species}</span>
+                <span class="poke-height">키 : <span>${poke_height}</span>m</span>
+                <span class="poke-weight">몸무게 : <span>${poke_weight}</span>kg</span>
+            </div>`;
+        }
+        
+        
+    </script>
+</body>
+</html>
