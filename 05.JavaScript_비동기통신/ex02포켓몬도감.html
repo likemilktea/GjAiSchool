@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .poke-list{
+        #head {
+            background-color: whitesmoke;
+            border-radius: 5px;
+        }
+
+        .poke-list {
             display: flex;
             flex-direction: row;
+            justify-content: center;
             flex-wrap: wrap;
+            background-color: whitesmoke;
+            border-radius: 5px;
+
         }
-        .poke-card{
+
+        .poke-card {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -20,39 +31,99 @@
             margin: 10px;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         }
-        .poke-img{
+
+        .poke-img {
             width: 150px;
             height: 150px;
         }
+        h1, h1+p{
+            text-align: center;
+        }
     </style>
 </head>
+
 <body>
+    <div id="head">
+        <h1>포켓몬 도감</h1>
+        <p><strong>총 <span id="total"></span>마리</strong></p>
+    </div>
     <div class="poke-list">
         <!-- content 들어갈 곳 -->
     </div> <!-- end poke-list -->
+    <script src="./js/jquery-3.7.0.js"></script>
     <script>
+        // 포켓몬 API를 이용해서 포켓몬 도감 만들기!
+        // 보여줄 정보 : 포켓몬 이름(name) 포켓몬 종(genus) 키(height) 몸무게(weight)
+        // 포켓몬 이름, 포켓몬 종 요청 URL : https://pokeapi.co/api/v2/pokemon-species/1
+        // 키, 몸무게 요청 URL
+
+        const pokeURL = "https://pokeapi.co/api/v2/pokemon-species/"
+        const pokeURL2 = "https://pokeapi.co/api/v2/pokemon/"
+
         const pokeList = document.getElementsByClassName("poke-list")[0];
-        console.log(pokeList);
-        // content
-        let img_no = 1;
-        let poke_no = 1;
-        let poke_name = "이상해씨";
-        let poke_species = "풀 타입";
-        let poke_height = 0.7;
-        let poke_weight = 6.9;
-        for (let img_no = 1; img_no < 152; img_no++) {
-            pokeList.innerHTML += 
-            `<div class="poke-card">
-                <img class="poke-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${img_no}.png" alt="">
-                <span class="poke-no">${img_no}</span>
-                <span class="poke-name">${poke_name}</span>
-                <span class="poke-species">${poke_species}</span>
-                <span class="poke-height">키 : <span>${poke_height}</span>m</span>
-                <span class="poke-weight">몸무게 : <span>${poke_weight}</span>kg</span>
-            </div>`;
+        const total = document.getElementById("total"); // 총 포켓몬 수
+        let speciesList = []; // 종 이름 색상
+        let pokemonList = []; // 키 몸무게
+
+        const getPokeData = (poke_url) => {
+            for (let i = 1; i < 152; i++){
+                $.ajax({
+                    url: poke_url + `${i}`,
+                    async: false,
+                    success: (result) => {
+                        speciesList.push({'name':result.names[2].name,'species':result.genera[1].genus,'color':result.color.name})
+                    },
+                    error: () => {
+                        alert("요청실패...");
+                    }
+                });
+            }
+        }
+        const getPokeData2 = (poke_url) =>{
+            for (let i = 1; i < 152; i++){
+                $.ajax({
+                    url: poke_url + `${i}`,
+                    async: false,
+                    success: (result) => {
+                        pokemonList.push({'height':result.height/10,'weight':result.weight/10})
+                    },
+                    error: () => {
+                        alert("요청실패...");
+                    }
+                });
+            }
         }
         
-        
+        getPokeData(pokeURL);
+        getPokeData2(pokeURL2);
+        console.log();
+        total.innerText = speciesList.length;
+        // content
+        let poke_name = 'name';
+        let poke_species = 'genus';
+        let poke_height = 'height';
+        let poke_weight = 6.9;
+        const draw_poke_card=()=>{
+            for (let no = 1; no < pokemonList.length+1; no++) {
+                poke_name = speciesList[no-1].name;
+                poke_species = speciesList[no-1].species;
+                poke_color = speciesList[no-1].color;
+                poke_height = pokemonList[no-1].height;
+                poke_weight = pokemonList[no-1].weight;
+                pokeList.innerHTML +=
+                    `<div style="background-color:${poke_color}; opacity:0.9;" class="poke-card" background>
+                    <img class="poke-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${no}.png" alt="${poke_name}">
+                    <span class="poke-no">도감번호 : ${no}</span>
+                    <span class="poke-name">이름 : ${poke_name}</span>
+                    <span class="poke-species">타입 : ${poke_species}</span>
+                    <span class="poke-height">키 : <span>${poke_height}</span>m</span>
+                    <span class="poke-weight">몸무게 : <span>${poke_weight}</span>kg</span>
+                </div>`;
+            }
+        }
+        draw_poke_card();
+
     </script>
 </body>
+
 </html>

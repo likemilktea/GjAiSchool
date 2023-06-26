@@ -38,7 +38,9 @@
                     
                     for (let i = 0; i < movieLIst.length; i++) {
                         // console.log(movieLIst[i].rank, movieLIst[i].movieNm, movieLIst[i].openDt);
+                        // doument.createElement(생성할 태그명): HTML요소객체를 생성해주는 함수
                         let li = document.createElement("li");
+                        // document.creatTextNode(생성할 내용) : 내용객체를 생성해주는 함수
                         let content = document.createTextNode(`${movieLIst[i].movieNm} (${movieLIst[i].openDt})`);
                         // 속성노드 생성
                         let idAttr = document.createAttribute("id");
