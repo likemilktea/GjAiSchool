@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map" style="width:1000px;height:800px;"></div>
+
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=28e7a774528580076413be26415de345"></script>
+    <script src="./js/jquery-3.7.0.js"></script>
+    <script>
+        let publicDataAddrJibun = [];
+        let publicDataAddrRoad = [];
+        let publicDataLat = [];
+        let publicDataLng = [];
+        let publicDataTourDestIntro = [];
+        let publicDataTourDestNm = [];
+        let positions = [];
+
+        const getPublicData = () => {
+            const tourURL = "http://apis.data.go.kr/6290000/tourdestbaseinfo/gettourdestbaseinfo?serviceKey=2Xw389iNll4fZMHHuwTRirL0CXHOSMO6WInFG8owNZWA1EhO1VoMA4wXY3oUgGe0%2FvQEw9TZDTgAmnEPcnN51A%3D%3D&type=json"
+            $.ajax({
+                url: tourURL,
+                success: (result) => {
+                    inputData(result);
+                    inputPosition();
+                    createMarker();
+                },
+                error: () => {
+                }
+            });
+        }
+        // 광주 관광지 데이터 요청하는 함수 호출
+        getPublicData();
+
+        let container = document.getElementById('map');
+        let options = {
+            center: new kakao.maps.LatLng(35.1466226304917, 126.92218933472951),
+            level: 1
+        };
+
+        let map = new kakao.maps.Map(container, options);
+        // 데이터를 입력하는 함수
+        function inputData(result) {
+            for (let i = 0; i < result.TourDestBaseInfo.length; i++) {
+                publicDataAddrJibun.push(result.TourDestBaseInfo[i].addrJibun);
+                publicDataAddrRoad.push(result.TourDestBaseInfo[i].addrRoad);
+                publicDataLat.push(parseFloat(result.TourDestBaseInfo[i].lat));
+                publicDataLng.push(parseFloat(result.TourDestBaseInfo[i].lng));
+                publicDataTourDestIntro.push(result.TourDestBaseInfo[i].tourDestIntro);
+                publicDataTourDestNm.push(result.TourDestBaseInfo[i].tourDestNm);
+            }
+        }
+        // 포지션에 입력하는 함수
+        function inputPosition() {
+            for (let i = 0; i < publicDataTourDestNm.length; i++) {
+                tempAddr = publicDataAddrRoad[i] !== "" ? publicDataAddrRoad[i] : publicDataAddrJibun[i]; 
+                positions.push({
+                    content: `
+                            <div>
+                                <p><strong>${publicDataTourDestNm[i]}</strong></p>
+                                <ul>
+                                    <li>${tempAddr}</li>
+                                    <li>${publicDataTourDestIntro[i]}</li>
+                                </ul>
+                            </div>
+                            `,
+                    latlng: new kakao.maps.LatLng(publicDataLat[i], publicDataLng[i]),
+                });
+            }
+        }
+        // 여러개 마커에 이벤트 등록하는 로직
+        // 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
+        function createMarker() {
+            for (let i = 0; i < positions.length; i++) {
+                // 마커를 생성합니다
+                let marker = new kakao.maps.Marker({
+                    map: map, // 마커를 표시할 지도
+                    position: positions[i].latlng // 마커의 위치
+                });
+
+                // 마커에 표시할 인포윈도우를 생성합니다 
+                let infowindow = new kakao.maps.InfoWindow({
+                    content: positions[i].content // 인포윈도우에 표시할 내용
+                });
+
+                // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+                // 이벤트 리스너로는 클로저를 만들어 등록합니다 
+                // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+                kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+                kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+            }
+        }
+
+        // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+        function makeOverListener(map, marker, infowindow) {
+            return function () {
+                infowindow.open(map, marker);
+            };
+        }
+
+        // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+        function makeOutListener(infowindow) {
+            return function () {
+                infowindow.close();
+            };
+        }
+    </script>
+
+</body>
+
+</html>
