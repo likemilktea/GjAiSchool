@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 n,b = list(map(int,input().split())) # 10진법 값과 진법B를 입력받음
 result=[] # 결과를 출력할 리스트
 i = 1 
@@ -18,3 +19,24 @@ for i in range(len(result)):
 result.reverse()
 for i in result:
     print(i,end='')
+=======
+import sys
+sysInput = sys.stdin.readline
+
+n = int(sysInput().rstrip())
+c = 0
+i = n
+while True:
+    c+=1 # 카운트
+    if i < 10:
+        i = '0' + str(i)
+    else:
+        i = str(i)
+    m = int(i[0])+int(i[1])
+    l = i[-1] + str(m)[-1]
+    if int(n) == int(l):
+        break
+    else:
+        i = int(l)
+print(c)
+>>>>>>> Stashed changes
