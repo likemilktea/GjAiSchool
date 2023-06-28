@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #dashborad{
+            display: flex;
+            flex-wrap: wrap;
+            width: auto;
+        }
+        div {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id=dashborad>
+        <div>
+            <canvas id="barChart"></canvas>
+        </div>
+        <div>
+            <canvas id="lineChart"></canvas>
+        </div>
+        <div>
+            <canvas id="doughnutChart"></canvas>
+        </div>
+        <div>
+            <canvas id="pieChart"></canvas>
+        </div>
+        <div>
+            <canvas id="raderChart"></canvas>
+        </div>
+        <div>
+            <canvas id="polarChart"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/jquery-3.7.0.js"></script>
+
+    <script>
+        let dateArr = [];
+        let elecDataArr = [];
+        const getPublicData = () => {
+                const requestURL = "http://apis.data.go.kr/B553734/iseelectricprod/getElectricProduction?serviceKey=2Xw389iNll4fZMHHuwTRirL0CXHOSMO6WInFG8owNZWA1EhO1VoMA4wXY3oUgGe0%2FvQEw9TZDTgAmnEPcnN51A%3D%3D&returnType=json&numOfRows=30&pageNo=1"
+
+                $.ajax({
+                    url: requestURL,
+                    success: (result) => {
+
+                        let itemList = result.body.items.item;
+                        // 서부지사 전기생산량 데이터 가져오기
+                        //  - 날짜(dates), 전기 생산량(elecprodqty), 지사(branchNm)
+                        for (let i = 0; i < itemList.length; i++) {
+                            if (itemList[i].branchNm === "서부지사") {
+                                // 날짜와 전기 생산량을 각 배열에 저장하기
+                                dateArr.push(itemList[i].dates)
+                                elecDataArr.push(itemList[i].elecprodqty)
+                            }
+                        }
+                        console.log(result.body.items.item);
+                        console.log(dateArr);
+                        console.log(elecDataArr);
+                    },
+                    error: () => {
+                        alert("요청오류...");
+                    }
+                });
+            }
+
+
+        const drawChart = (target, chartType, dateArr, elecDataArr) => {
+            const ctx = document.getElementById(target);
+
+            new Chart(ctx, {
+                type: chartType,
+                data: {
+                    labels: dateArr,
+                    datasets: [{
+                        label: `# ${target}`,
+                        data: elecDataArr,
+                        borderWidth: 4
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+        getPublicData();
+
+        setTimeout(() => {
+            drawChart('barChart','bar',dateArr,elecDataArr)
+            drawChart('lineChart','line',dateArr,elecDataArr)
+            drawChart('doughnutChart','doughnut',dateArr,elecDataArr)
+            drawChart('pieChart','pie',dateArr,elecDataArr)
+            drawChart('raderChart','radar',dateArr,elecDataArr)
+            drawChart('polarChart','polarArea',dateArr,elecDataArr)
+        }, 3000);
+
+
+    </script>
+</body>
+
+</html>
