@@ -1,0 +1,6 @@
+선영표 선생님
+
+node js 다운>
+cmd > cd ctrl + v > code .
+npx create-react-app project01
+npm start
