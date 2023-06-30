@@ -1,11 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// 1.App -Component & props 개념
-// import App from './App'; 
-// 2.Component & Props 실습
-
-import App from './AppExample'; // app이라는 컴포넌트를 가져와서 사용하겠습니다!
+// 1. Ex01 - 변수와 state의 차이
+import App from './Ex01'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
