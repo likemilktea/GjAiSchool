@@ -1,13 +1,17 @@
 import sys
-sysinput = sys.stdin.readline
-n = int(sysinput())
-mLi = []
-for i in range(n):
-    mLi.append(list(map(int,sysinput().split())))
-lLi =[]
-for i in range(0,10):
-    lLi.append([str(i**j)[-1] for j in range(1,5)])
-
-for i in mLi:
-    # print(i[1]%4)
-    print(lLi[i[0]][i[1]%4] if i[1]%4-1<0 else lLi[i[0]][3])
+sysinput = sys.stdin.readline().rstrip
+a = list(map(int,list(sysinput())))
+answer = []
+for i in range(len(a)-1,-1,-1):
+    if a[i] == 0:
+        answer.append(7)    
+    elif a[i]>=7:
+        answer.append(7)
+    elif a[i]>=4:
+        answer.append(4)
+    else:
+        break
+answer.reverse()
+answer=list(map(str,answer))
+for c in answer:
+    print(c,end='')

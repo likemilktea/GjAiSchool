@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 const Ex01 = () => {
     /* React Event
@@ -22,11 +22,29 @@ const Ex01 = () => {
         num++;
         console.log('현재 num :',num);
     }
-    return (
+    // state로 값 변경해보기!
+    // const [변수이름, set변수이름] = useState(초기값)
+    // 내가 만약 state의 갑ㅄ을 변경하고 싶다면 set 변수이름 함수를 호출
+    
+    // 예) 내가 화면에 바로 갱신되sms num2를 3으로 변경하고 싶다면
+        // setNum(3)
+    const[num2,setNum2] = useState(0)
+    const ck2 = () =>{
+        setNum2(num2+1);
+    }
+    const ck3 = () =>{
+        setNum2(num2-1);
+    }
+    // ** 간단한 예제! -1이 적힌 버튼을 개재해서 state 옆의 숫자를 하나씩 감소
 
+
+    return (
     <div>
-        <p>{num}</p>
+        <p>변수 : {num}</p>
+        <p>state : {num2}</p>
         <button onClick={ck}>+1</button>
+        <button onClick={ck2}>+1</button>
+        <button onClick={ck3}>-1</button>
     </div>
   )
 }
