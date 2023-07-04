@@ -1,17 +1,12 @@
 import sys
-sysinput = sys.stdin.readline().rstrip
-a = list(map(int,list(sysinput())))
-answer = []
-for i in range(len(a)-1,-1,-1):
-    if a[i] == 0:
-        answer.append(7)    
-    elif a[i]>=7:
-        answer.append(7)
-    elif a[i]>=4:
-        answer.append(4)
+sysinput = sys.stdin.readline
+n = int(sysinput())
+answers = []
+for i in range(n):
+    answers.append(list(map(int,sysinput().split())))
+print("Gnomes:")
+for a in answers:
+    if a==sorted(a) or a==sorted(a,reverse=True):
+        print("Ordered")
     else:
-        break
-answer.reverse()
-answer=list(map(str,answer))
-for c in answer:
-    print(c,end='')
+        print("Unordered")

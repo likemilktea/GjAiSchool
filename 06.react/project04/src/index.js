@@ -8,7 +8,13 @@ import './index.css';
 // 3. Ex03 - 랜덤게임 실습
 // import App from './Ex03'
 // 4. mpa & Filter 함수 JS개념
-import App from './Ex04'
+// import App from './Ex04'
+// 5. Map함수로 반복 렌더링하기
+// import App from './Ex05'
+// 6. Map함수 최종 실습
+// import App from './Ex06'
+// 7. 하위 -> 상위 값 보내주기
+import App from './Ex07'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
