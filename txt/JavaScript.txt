@@ -1,0 +1,388 @@
+임명진 선생님
+
+
+1일차=================================
+*입출력
+
+출력문
+1.웹 문서에 출력하는 기능
++태그도 같이 적용
+기존 내용을 전부 지움
+document.write("Hello, JavaScript!");
+document.write("<h1>JavaScript<h1>");
+
+2.알림창
++ 기능처리에 대한 결과를 사용자에게 알려줄 때 사용
+alert("Hello, JavaScript");
+
+3.개발자도구 -콘솔창에 출력하는 기능
++실제 개발 후 결과값을 확인할 때 주로 사용
+console.log("Hello, JavaScript");
+
+입력문
+1.키보드의 입력값을 반환하는 기능
+let name;
+console.log(name=prompt("이름을 입력하시오"));
+document.write(name);
+
+2.확인/취소를 선택하여 참/거짓을 반환하는 기능
+confirm("변경된 정보를 반영하겠습니까?");
+
+
+*변수 자료형
+
+변수 : 데이터를 저장할 수 있는 공간
+변수선언 키워드 : var, let, const
+변수의 특징
+- 데이터를 저장했을 때 자료형이 결정된다.
+- 선언만 했을 경우, 자료형은 undefined이다.
+
+var 특징
+- 중복 선언이 가능하다 --> 오류를 일으킬 가능성
+  **-> 변수 호이스팅**
+   + 선언된 변수를 맨 위로 올려서 정의하는 방식
+
+변수 선언과 초기화
+let의 특징
+- 중복 선언이 불가능하다
+
+const의 특징
+- 중복 선언이 불가능하다.
+- 새로운 값으로 변경이 불가능하다
+* 객체를 정의할 때 사용
+
+
+자료형
+1.기본타입 : string, number, boolean, null, undefined
+null vs undefined
+- null : 데이터가 비어있다는 의미 + object타입 + 저장공간 존재
+- undefined : 데이터가 비어있다는 의미 + 자료형 X + 저장공간 X
+
+2.참조타입 : array, object etc...
+
+
+연산자
+
+1. 산술연산자: + - * /(나누기) %(나머지)
+실수 -> 정수로 변환
+document.writeln(parseInt(5/2));
+
+2. 증감연산자 : ++, --
+- 연산자를 앞 또는 뒤에 작성했을 때 연산되는 순서가 달라진다.
+- ex) num2++ : 변수를 먼저 사용한 후 +1
+     ++num2 : +1을 연산한 다음에 변수에 반영
+ num2++ => num = num + 1 or num += 1
+
+3. 대입(할당)연산자: =, +=, -=, *=, /=, %=
+
+4. 비교연산자 : ==, !=, ===, !==, <, >, <=, >=
+== : 동등 연산자 -> 숫자데이터와 비교 시 자동형변환하여 비교
+=== : 일치 연산자 -> 자료형과 데이터 모두 비교
+*비교 연산자는 숫자데이터와 비교 시 자동 형변환을 하기 때문에
+자료형을 맞춰준 후 비교해야 한다.
+
+5. 논리연산자 : &&(AND), ||(OR), !(NOT)
+&&연산자 : 두 비교식이 모두 true일 때 결과는 true
+먼저 나온 비교식의 결과가 false인 경우에는
+뒤에 나오는 비교식을 판단하지 않는다.
+
+||연산자 : 둘 중 하나의 비교식이 true일 때 결과는 true
+
+!연산자 : 결과값을 반대로 변환하는 연산자
+- 비교식을 정의할 때 개발자의 판단에 따라 달라질 수 있음
+- 일치하는 비교식을 만들 것인지
+- 불일치하는 비교식을 만들 것인지
+
+6. 삼항연산자 : 비교식 ? true : false
+
+
+2일차===========================================
+[ 2023.06.13 복습 ]
+입출력
+
+document.write() : 웹 문서(페이지)
+alert() : 알림창
+console.log() : 개발자도구->콘솔창
+prompt() : 키보드입력값 (string데이터로 반환)
+confirm() : 확인/취소 (boolean데이터로 반환)
+변수
+
+선언할 때 사용하는 키워드 : var, let, const(상수)
+변수의 자료형은 데이터를 초기화(저장)할 때 결정
+
+호이스팅
+변수 또는 함수 선언을 가장 위로 올려서 실행하는 방식. 재선언 가능케 함
+자료형
+
+기본타입: string, number, boolean, null, undefined
+참조타입: array, obejct etc
+연산자
+
+산술연산자: + - * / %
+증감연산자: ++ –
+대입(할당)연산자: = += -= *= /= %=
+비교연산자: ==(동등) != ===(일치) !== > >= < <=
+논리연산자: && || !
+삼항연산자: 비교식 ? true일 때 : false일 때
+
+*****************************************************************
+조건문
+- 주어진 조건을 비교 또는 판단하여 결과를 얻는 구문
+
+단순 if문
+if(조건문){실행문}
+let num = 10;
+let num2 = 5;
+
+if(num === 10 && num2 > 1){
+    console.log("조건이 만족되었습니다!");
+}
+
+if~else문
+if(조건문){실행문} else{실행문}
+
+tip : 템플릿 문자열 console.log(`%{}`)
+문자열 데이터 안에 변수를 넣는 방식
+else if문
+if(조건식){실행문}else if(조건식){실행문}
+
+switch~case문 : 비교할 값으로 판단하여 실행하는 구문
+switch (key) { :조건값
+    case value: :조건값과 비교할 값
+        break;
+    default: : 비교할 값들이 모두 일치하지 않은 경우 실행하는 구문
+        break;}
+
+반복문 : 
+- 특정 조건이 만족할 때까지 실행문을 반복적으로 수행하는 구문
+let num = 0;
+while (num < 10) {
+    console.log(num++);           
+}
+for문
+for (초기화; 조건식; 작업후실행) {실행문;}
+
+
+3일차======================================
+ctrl k + f -> 부분 정렬
+
+배열(array)
+- 여러 개의 데이터를 하나의 공간에 담아 관리하는 자료 구조
+
+배열 생성
+- new Array()로 생성했을 때 데이터 초기화 문제가 있기 때문에
+new Array()가 아닌 []를 이용해서 배열을 생성
+
+
+배열 CRUD(Create Read Update Delete)
+
+데이터 추가
+1.인덱스를 활용해서 각 공간의 데이터를 초기화
+첫번째공간(0번위치)에 데이터를 저장하려면
+arr[0] = 1;
+
+2. push() 기능을 이용해서 배열의 맨 마지막 위치에 데이터를 추가
+arr.push(6);
+
+데이터 읽기
+// - 인덱스를 이용해서 원하는 위치의 데이터를 출력
+console.log(`arr의 8번째 위치의 데이터는? ${arr[7]}`);
+
+데이터 수정
+- 배열 변수[인덱스] = 변경할 데이터;
+arr[4] = 10;
+
+데이터 삭제
+1. 배열의 마지막 위치 데이터를 삭제하는 기능
+- 삭제한 데이터를 활용해야 되는 경우에는 변수에 저장
+let num = arr.pop();
+arr.pop();
+
+2. 특정 위치 데이터를 삭제하는 기능 배열변수.splice(삭제할 데이터의 위치, 삭제할 갯수)
+arr.splice(2,3);
+
+배열변수.slice(시작인덱스, 끝인덱스) : 배열 내 데이터를 잘라낸 후 새로운 배열로 반환해줌
+arr.slice(1,5) -> 1~4까지의 데이터만 접근
+끝인덱스의 데이터까지 포함해서 가져와야할 경우에는 끝 인덱스에 +1 해줘야 한다.
+newArr = fruits.slice(fruits.indexOf("pear"),fruits.indexOf("pineapple")+1);
+
+
+4일차=====================================
+함수(function)
+- 여러 동작을 하나의 블록 단위로 만드는 방식
+
+특징 
+- 코드를 재사용할 수 있다.
+- 유지보수가 용이하다.
+- 신뢰할 수 있는 코드를 사용할 수 있다.
+- 코드의 가독성이 좋다.
+
+함수 선언
+- function키워드를 사용해서 함수를 선언할 수 있다.
+
+함수명(매개변수,...){}
+- 매개변수(parameter) "함수를 호출한 위치에서 넘겨받은 데이터를 저장하는 변수"
+function print(name, age){
+console.log(`${name} 님 ${age}세 환영합니다!`);
+}
+
+선언한 함수를 사용하려면? --> 호출
+호출한다 -> 함수명();
+
+
+5일차=========================================
+객체(Object)
+- 여러 속성(property)을 하나의 변수에 저장할 수 있는 자료형
+key/value 구조 
+ex)let obj = {key:value,key=value,...}
+자바스크립트의 객체형태는 데이터 포맷 중에서 JSON형식과 동일한 구조
+
+사람을 표현할 수 있는 객체를 생성해보기
+:이름(name), 나이(age), 성별(gender)
+내장객체
+- 자바스크립트에서 제공하는 내장된 객체
+종류 : Array, Date, Math, String, ...
+
+Date객체 다루기
+1. Date객체 생성하기
+- 현재 시간을 기준으로 생성
+let date = new Date();
+
+2. Date객체 함수 사용하기
+console.log(date);
+console.log("년도 : ",date.getFullYear());
+console.log("월 : ",date.getMonth()+1);
+console.log("일 : ",date.getDate());
+console.log("요일 : ",date.getDay());
+console.log("시간 : ",date.getHours());
+console.log("분 : ",date.getMinutes());
+console.log("초 : ",date.getSeconds());
+
+
+브라우저 객체
+- 브라우저에서 제공해주는 객체
+종류 : BOM - window, location, navigator, history, screen 
+     DOM - document(★★★)
+
+window객체 다루기
+팝업창 띄우는 함수 : open(페이지 경로, 팝업창 이름, 옵션)
+- 옵션 : 가로크기, 세로크기, 주소창출력여부, 위치조정, ...
+window.open("ex22함수표현식실습.html","이모지출력창","width=500px,height=500px,top=200px,left=200px");
+
+location 객체 다루기
+console.log(location.href);
+
+페이지를 이동하고 싶다면
+location.href = "https://www.naver.com";
+
+
+6일차========================================
+DOM(Document Object Modle : 문서객체모델)
+- 웹 문서에 정의된 태그를 JavaScript에서 접근할 수 있도록 객체로 변환해주는 모델
+
+HTML문서 내에 있는 요소에 접근하려면
+document : 현재 문서
+ . : 현재문서 내에 있는 속성 또는 함수에 접근
+getElementById() : 요소의 id속성값을 이용해서 요소객체에 접근
+const tit = document.getElementById("tit");
+
+console.log(`h1요소 접근 결과 : ${tit}`);
+
+접근한 요소의 컨텐츠에 접근하려면
+요소객체.innerText : 요소의 컨텐츠만에 접근(문자열)
+요소객체.innetHTML : 요소의 컨텐츠+자식요소에 접근(문자열)
+console.log(tit.innerText);
+console.log(tit.innerHTML);
+
+접근한 요소의 컨텐츠를 업데이트(초기화)하려면
+요소객체.innerText = 수정할 데이터
+tit.innerText = tit.innerText+"요소에 접근 또 성공!"
+
+요소의 컨텐츠를 업데이트할 때 새로운 요소를 반영하고 싶다면
+요소객체.innerHTML = 요소+데이터 형태
+tit.innerHTML = "<a href='https://www.naver.com'>요소에 접근 성공</a>"
+
+a요소의 글자색을 파란색으로 변경을 하려면
+HTML Collection : 유사배열
+const aTag = tit.getElementsByTagName("a")[0];
+console.log(aTag);
+
+요소객체.style.스타일속성 = "변경할 값";
+
+- 
+1. 태그 자체에 이벤트 적용해보기
+- 'on이벤트명' = 자바스크립트 문법;
+- 이벤트가 발생했을 때 정의된 자바스크립트 코드를 실행
+
+<button onclick="alert('클릭이벤트 실행!')">클릭</button>
+<button id="btn1">button1</button>
+<button id="btn2">button2</button>
+
+이벤트(Event)
+- 사용자가 브라우저에서 하는 행위
+ex) 마우스를 클릭했을 때, 키보드를 눌렀을 때, 입력칸에 커서를 두었을 때 등의 행위
+
+이벤트 핸들러(Event Handler)
+- 이벤트가 발생했을 때 동작하는 함수
+
+const btn1 = document.getElementById("btn1");
+const btn2 = document.getElementById("btn2");
+
+2-1. 요소객체에 이벤트 적용해보기
+btn1.onclick = () => {
+alert("클릭입벤트 실행2!");
+}
+
+2-2. 함수를 이용한 이벤트 적용해보기
+btn2.addEventListener("click", () => {
+    alert("클릭이벤트 실행3")
+});
+
+실행할 로직이 복잡할 경우에는 아래와 같이 함수형태로 먼저 정의한 다음에
+이벤트 핸들러 위치에 함수명만 작성
+const executeFunc = () =>{
+alert("클릭이벤트 실행3");
+}
+
+()를 붙이지 않는 이유 -> 자바스크립트 코드가 실행될 때 함수호출을 만나면
+무조건 먼저 실행하게 되어 있기 때문에 ()를 붙이지 않는다!!
+
+
+7일차======================================
+숫자맞추기 게임
+
+버튼 비활서화
+play_button.disabled=true;
+
+textarea value값 조정
+user_input.value = "";
+
+
+8일차====================================
+$ : jQuery객체
+ajax() : 비동기 통신을 사용하기 위한 함수(메서드)
+url : 요청할 서버의 주소 ex)https://www.naver.com
+success : 서버의 응답이 왔을 때 살행하는 함수
+error : 서버의 요청 또는 응답에 오류가 발생했을 때 실행하는 함수
+const reqButton = document.getElementById('req-button');
+const movieInfo = document.getElementById('movie-info');
+const movieURL = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=20230621"
+
+
+ul,li요소,text 생성하기
+let ol = document.createElement("ol");
+let li = document.createElement("li");
+let content = document.createTextNode("범죄도시3");
+
+1.text --> li 붙이기
+li.appendChild(content)
+2.li --> ul 붙이기
+ol.appendChild(li)
+
+id 부여
+li.setAttributeNode(idAttr);
+li.appendChild(content);
+ol.appendChild(li);
+
+
+9일차===================================

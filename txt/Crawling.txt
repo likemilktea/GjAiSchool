@@ -1,0 +1,22 @@
+최영화 선생님
+
+# BeautifulSoup
+
+import requests as req
+from bs4 import BeautifulSoup as bs
+url = 'https://www.melon.com/chart/'
+h = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"}
+res  = req.get(url , headers = h)
+soup = bs(res.text,'lxml')
+soup.select("div.ellipsis.rank01>span>a")
+
+requests 라이브러리 
+- 페이지의 정보를 요청,응답받는 역할
+- import requests as req
+- req.get(url)
+- 결과: Response [200(성공),400(클라이언트의 요청 문제),500(서버응답 문제)]
+- res.text (문자열 형태의 페이지 정보)
+
+BeautifulSoup 라이브러리
+-우리가 응답받은 페이지 정보를 컴퓨터가 알아먹을수 있는 html 형태로 변경 해주는 라이브러리 
+- bs(페이지정보, 파싱방법'lxml')
