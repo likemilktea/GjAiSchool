@@ -18,9 +18,8 @@ const MenuBar = () => {
         <button style={buttonStyle}><Link style={linkStyle} to="/">Main</Link></button>
         <button style={buttonStyle}><Link style={linkStyle} to="/about">About</Link></button>
         <button style={buttonStyle}><Link style={linkStyle} to="/login">Login</Link></button>
-        <button style={buttonStyle}><Link style={linkStyle} to="/notFount">NotFound</Link></button>
         <button style={buttonStyle}><Link style={linkStyle} to="/board">Board</Link></button>
-        <button style={buttonStyle}><Link style={linkStyle} to="/detail">Detail</Link></button>
+        <button style={buttonStyle}><Link style={linkStyle} to="/detail/1">Detail</Link></button>
 
     </div>
   )

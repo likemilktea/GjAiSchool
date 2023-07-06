@@ -142,3 +142,32 @@ React 단방향으로 정보를 전달하는 라이브러리
 4) 컴포넌트에 값이 변경되었을 때 (state,props...etc)
    => num이 변경되었을 때, 특정 함수를 실행시켜줘! 
    => useEffect(함수,[num])
+
+6일차==============================================
+Router 
+
+1. 
+사용자가 주소를 입력하면 해당 주소를 감지하는 역할 => BrowserRouter 
+나의 Application 전체적으로 감싸주기!
+index.js 에 쓰셔도 되고 
+App.js 에 전체적으로 감싸도 됨! 
+
+2. 
+- 여러 경로를 감싸서, 사용자가 요청한 조건에 맞는 경로만 렌더링 해주는 역할 Routes 
+(옛날이름 :Switch) 
+
+- 경로 ? Route 
+ > path => 어디로?
+ > element => 그 path를 찾았을때 어떤 컴포넌트? 
+
+실제 이동할 떄 사용 2
+1.a태그를 대신하지만, 실제로 페이지 이동을 하는 것이 아니라 URL 주소 값을 바꿔주는 태그? Link 
+2. 이동하는 리액트 훅 useNavigate 
+
+[리액트 부트스트랩 사용하기]
+1. 설치 
+npm install react-bootstrap bootstrap
+2. importing Components
+import { Button } from 'react-bootstrap';
+3. CSS 적용 
+import 'bootstrap/dist/css/bootstrap.min.css';

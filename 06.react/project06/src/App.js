@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
 import AboutPage from './pages/AboutPage';
@@ -7,8 +7,11 @@ import NotFound from './pages/NotFound';
 import Board from './pages/Board';
 import Detail from './pages/Detail';
 import MenuBar from './pages/MenuBar';
+import { Button, ButtonGroup } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  const nav = useNavigate()
   /* 라우팅 기능을 사용해보자!
     - 라우팅 (Routing) : 사용자가 요청한 URL에 따라 그에 적합한 페이지를 보여주는 것
       ex) 사용자 "메인페이지 보여줘!" <- Main Page 제공
@@ -38,34 +41,51 @@ function App() {
                     - path (경로) : 사용자가 이렇게 요청을 했을 때 ~
                     - element (컴포넌트) : 이 컴포넌트를 보여주세요 ~
     */
-    
+
   return (
 
     <div>
-      <BrowserRouter>
+      {/* 상단바 생성 */}
+
+
         <h1 style={{ textAlign: "center" }}>
-        <span style={{color:"red"}}>W</span>
-        <span style={{color:"orange"}}>E</span>
-        <span style={{color:"yellow"}}>L</span>
-        <span style={{color:"green"}}>C</span>
-        <span style={{color:"blue"}}>O</span>
-        <span style={{color:"indigo"}}>M</span>
-        <span style={{color:"purple"}}>E</span> to React Router!
+          <span style={{ color: "red" }}>W</span>
+          <span style={{ color: "orange" }}>E</span>
+          <span style={{ color: "yellow" }}>L</span>
+          <span style={{ color: "green" }}>C</span>
+          <span style={{ color: "blue" }}>O</span>
+          <span style={{ color: "indigo" }}>M</span>
+          <span style={{ color: "purple" }}>E</span> to React Router!
         </h1>
+
         <hr />
         <MenuBar></MenuBar>
         {/* 필요한 페이지 가져다주는 애 */}
         <hr />
-        <Routes>
-          <Route path='/' element={<MainPage />}></Route>
-          <Route path='/about' element={<AboutPage />}></Route>
-          <Route path='/login' element={<LoginPage />}></Route>
-          <Route path='/notFount' element={<NotFound />}></Route>
-          <Route path='/board' element={<Board />}></Route>
-          <Route path='/detail' element={<Detail />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+        <div style={{ textAlign: "center" }}>
+          <ButtonGroup aria-label="Basic example">
+            <Button variant="warning" onClick={() => nav(('/'))}>Main</Button>
+            <Button variant="warning" onClick={() => nav(('/login'))}>Login</Button>
+            <Button variant="warning" onClick={() => nav(('/about'))}>About</Button>
+            <Button variant="warning" onClick={() => nav(('/board'))}>Board</Button>
+            <Button variant="warning" onClick={() => nav(('/detail'))}>Detail</Button>
+          </ButtonGroup>
+        </div>
+        <hr/>
+        <div>
+          <Routes>
+            <Route path='/' element={<MainPage />}></Route>
+            <Route path='/about' element={<AboutPage />}></Route>
+            <Route path='/login' element={<LoginPage />}></Route>
+            <Route path='/board' element={<Board />}></Route>
+            <Route path='/detail/:num' element={<Detail />}></Route>
+
+            <Route path='*' element={<NotFound />}></Route>
+            {/* notFound페이지는 우리가 설정해둔 path이외에 모든 페이지에서 떠야한다*/}
+
+          </Routes>
+        </div>
+    </div >
   );
 }
 
