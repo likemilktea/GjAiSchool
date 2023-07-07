@@ -1,7 +1,7 @@
 import './App.css';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useEffect} from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
   */
 
   let movieUrl = 'http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=20230601';
-  let movieInfo
+  const [movieList, setMovieList] = useState([]);
   /* 화면에 영화 랭킹을 띄워주자! 
   - jQuery + aJax 방식
     => 리액트에서는 jQuery라이브러리를 사용할 필요가 없기 때문에
@@ -33,10 +33,7 @@ function App() {
    수초간 화면 자체가 안 뜨면 사용자 입장에서 불편하다고 느낌
   */
 
-   useEffect(()=>{
-    // getDataWithFetch()
-    getDataWithAxios()
-   },[])
+
 
   /* Case 1. fetch
   1) 장점
@@ -51,20 +48,20 @@ function App() {
 
   const getDataWithFetch = () => {
     console.log('getDataWithFetch');
-    
+
     // fetch(movieUrl)
     //   .then(res => res.json())//fetch를 통해 받아온 데이터를 json 형태로 파싱
     //   .then(res => console.log(res))
     //   .catch(()=>{console.error('error!')})
-    
+
     // Q. 만약 내가 프론트에서 백으로 보내줘야할 정보가 있다면?
     // => 방법만 알려주는 것, 지금 당장 필요X
-    fetch(movieUrl,{
-      id : 'seonzeti'
+    fetch(movieUrl, {
+      id: 'seonzeti'
     })
       .then(res => res.json())//fetch를 통해 받아온 데이터를 json 형태로 파싱
       .then(res => console.log(res))
-      .catch(()=>{console.error('error!')})
+      .catch(() => { console.error('error!') })
   }
   /* Case 2 axios
   1)장점
@@ -79,22 +76,31 @@ function App() {
   1) npm i axios
   2) import axios from 'axios'
   */
-  const getDataWithAxios = () => {
-    console.log('getDataWithAxios');
-    axios(movieUrl)
-    // .then(res => movieInfo = res.data.boxOfficeResult.dailyBoxOfficeList)
-    .then(res => movieInfo = res)
-    .then(res => console.log("data2 : ",res))
-    console.log("data1 : ", movieInfo);
+  const getDataWithAxios = async () => {
+    // console.log('getDataWithAxios');
+    // axios(movieUrl)
+    //   // .then(res => movieInfo = res.data.boxOfficeResult.dailyBoxOfficeList)
+    //   .then(res => movieInfo = res)
+    //   .then(res => console.log("data2 : ", movieInfo))
+
+    // console.log("data1 : ", movieInfo);
+    const response = await axios.get(movieUrl);
+    const movieInfo = response.data.boxOfficeResult.dailyBoxOfficeList;
+    setMovieList(movieInfo)
+
 
     // 만약 내가 데이터를 보내주고 싶으면?
     // 1. get방식으로 데이터를 보내주는 경우
-    axios.get(movieUrl,{id:'seonzeti'})
-    .then(res => console.log(res))
+    axios.get(movieUrl, { id: 'seonzeti' })
+      .then(res => console.log(res))
 
     // 2. post 방식? axios.post()
   }
-
+  getDataWithAxios()
+  useEffect(() => {
+    // getDataWithFetch()
+    // getDataWithAxios()
+  }, [])
 
 
   return (
@@ -109,16 +115,14 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {/* <tr>
-            <td>{movieInfo[0].rank}</td>
-            <td>{movieInfo[0].movieNm}</td>
-            <td>{movieInfo[0].openDt}</td>
-          </tr> */}
-          <tr>
-            <td>2</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
+          {movieList.map((movie, index) => (
+            <tr key={index}>
+              <td>{movie.rank}</td>
+              <td>{movie.movieNm}</td>
+              <td>{movie.openDt}</td>
+            </tr>
+          ))}
+
         </tbody>
       </Table>
     </div>

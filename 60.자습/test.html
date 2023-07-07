@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="UTF-8">
+  <title></title>
+  
+</head>
+<body>
+    <div id="app">
+      <h1>끝말잇기 해봐요</h1>
+      <p class="qustion">시작</p>
+      <input class="in" type="text" />
+      <p class="result">입력해봐요</p>
+    </div>
+<script src="index.js"></script>
+<script>
+    const start = document.getElementsByClassName("qustion");
+    const textBox = document.getElementsByClassName("in");
+    const result = document.getElementsByClassName("result");
+
+    textBox[0].addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      console.log(textBox[0].value[textBox[0].value.length-1]);
+      if(textBox[0].value===""){
+        result[0].innerHTML="제대로 입력하세용"
+      }else if(textBox[0].value[0]===start[0].innerHTML[start[0].innerHTML.length-1]){
+        result[0].innerHTML="정답!!"
+      }else{
+        result[0].innerHTML="땡!!"
+      }
+      start[0].innerHTML=textBox[0].value;
+    }
+});
+
+</script>
+</body>
+</html>
