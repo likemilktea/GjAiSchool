@@ -33,6 +33,10 @@ function App() {
    수초간 화면 자체가 안 뜨면 사용자 입장에서 불편하다고 느낌
   */
 
+   useEffect(()=>{
+    getDataWithAxios()
+   },[])
+
 
 
   /* Case 1. fetch
@@ -76,31 +80,40 @@ function App() {
   1) npm i axios
   2) import axios from 'axios'
   */
-  const getDataWithAxios = async () => {
-    // console.log('getDataWithAxios');
-    // axios(movieUrl)
-    //   // .then(res => movieInfo = res.data.boxOfficeResult.dailyBoxOfficeList)
-    //   .then(res => movieInfo = res)
-    //   .then(res => console.log("data2 : ", movieInfo))
+  const getDataWithAxios = () => {
+    console.log('getDataWithAxios');
+    axios(movieUrl)
+      .then(res => {
+        setMovieList(res.data.boxOfficeResult.dailyBoxOfficeList);
+        console.log(movieList);
 
-    // console.log("data1 : ", movieInfo);
-    const response = await axios.get(movieUrl);
-    const movieInfo = response.data.boxOfficeResult.dailyBoxOfficeList;
-    setMovieList(movieInfo)
+        // 1) axiosㄹㄹ 통해서 사지고 온 값이 존재 res(매개변수)
+        // 2) 내가 어떤 값들을 화면에 띄워줘야 하는데 반복해서 띄워줘야 한다 => map 함수
+        // 3) 근데 map함수는 무슨 함수> 배열 함수
+        // 4) 즉. 우리가 유의미한 배열을 뽑아내야 한다.
+          // (res.data.boxOfficeResult.dailyBoxOfficeList)
+        // 5) 그 유의미한 배열은 매개변수를 이용해서 가져온 값이기 때문에
+        //  특정 함수에서만 사용 가능 => useState로 관리하고 있는 배열 안에 세팅
+      })
+
+      // 만약, movieList의 값이 변경되었다면? =>즉 유의미한 배열 데이터가
+      // 전역 state로 잘 셋팅되었다면?
 
 
     // 만약 내가 데이터를 보내주고 싶으면?
     // 1. get방식으로 데이터를 보내주는 경우
-    axios.get(movieUrl, { id: 'seonzeti' })
-      .then(res => console.log(res))
+    // axios.get(movieUrl, { id: 'seonzeti' })
+    //   .then(res => {
+    //     console.log(res.data.boxOfficeResult)
+    //   })
 
     // 2. post 방식? axios.post()
   }
-  getDataWithAxios()
   useEffect(() => {
-    // getDataWithFetch()
-    // getDataWithAxios()
-  }, [])
+    console.log('changed movieList :', movieList)
+    let movieLisetCode = movieList.map(item=>{
+      return <p>item.moveNm</p>})
+  }, [movieList])
 
 
   return (
@@ -115,6 +128,17 @@ function App() {
           </tr>
         </thead>
         <tbody>
+          {/* 표의 헤더 , 테이블은 반복되지 않기 때문에 map 함수에 포함X
+           => tr,td만 반복
+          
+            위쪽에 작성했을 땐 안 됐는데, 렌더링 안에 작성하니까 되는 이유?
+            기본적으로 useEffect는 컴포넌트에 변화가 있을 때마다 렌더링
+            화면의 갱신, 값의 변화 등 변화가 존재할 때마다 다시 렌더링
+
+            프로젝트를 진행하다가 시점 잡기가 어려우면 화면을 렌더링하는
+            컴포넌트 return 문 안에 진행하시는 게 가장 안전함
+          */}
+          
           {movieList.map((movie, index) => (
             <tr key={index}>
               <td>{movie.rank}</td>
