@@ -1,0 +1,9 @@
+digraph Tree {
+node [shape=box, style="filled", color="black", fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label="odor_n <= 0.5\nsamples = 5686\nvalue = [2947, 2739]\nclass = p", fillcolor="#fdf6f1"] ;
+1 [label="samples = 3214\nvalue = [557, 2657]\nclass = e", fillcolor="#63b2ea"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="samples = 2472\nvalue = [2390, 82]\nclass = p", fillcolor="#e68540"] ;
+0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+}
