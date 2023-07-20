@@ -26,10 +26,26 @@ conda install nbconvert==5.4.1
 pip install --upgrade jupyter
 
 평가지표
-- accuracy(정확도)
-- recall(재현율)
-- precision(정밀도)
+- 평가지표는 비슷한 게 안정적이다.
+positive TN FP
+negative FN TP
+          N P
+- accuracy(정확도) TP+TN  /  TP +TN + FP + FN
+    전체 중에 맞춘 비율
+    결과 1개
+- recall(재현율) TP  /  TP + FN
+    실제값 중에서 맞춘 비율
+    클래스별로 결과가 나옴
+    애매한 것을 맞다고 판단하고 싶을 경우 재현율을 우선시 한다
+- precision(정밀도) TP  /  TP + FP
+    예측값 중에서 맞춘 비율
+    클래스 별로 결과가 나옴
+    애매한 것을 틀리다고 판단하고 싶을 경우 정밀도를 우선시 한다
+- 정밀도와 재현율의 관계
+    trade-off 한 쪽이 높아지면 다른 한 쪽은 낮아진다.
 - f1 score
+    정밀도와 재현율의 조화평균
+    1에 가까울수록 정밀도와 재현율이 고르게 분포되어 있다는 것
 
 분류 vs 회귀
  - 분류 : 정해진 정답이 있다.
@@ -122,3 +138,5 @@ pip install --upgrade jupyter
  - 배깅 (Boostrap Aggregation): 약간 다른 독립된 훈련 데이터 세트트를 여러개
     생성하는 것으로 통계적 학습(머신러닝)의 결과 분산을 줄이면 알고리즘 ->overfitting감소
     ->이산 데이터인 경우에는 투표(voting)방식, 연속 데이터인 경우에는 평균으로 집계(RandomForest 등)
+
+데이터 스케일링
