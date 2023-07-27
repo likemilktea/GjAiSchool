@@ -1,0 +1,25 @@
+
+git init - 깃 드라이브 설정
+
+staging area
+git add ./Test.html
+git commit -m '내용'
+git push origin master
+git pull origin master
+
+local repository
+
+q를 누르면 빠져나옴
+
+git config --global user.email "user@email.com"
+git config --list
+git log
+
+profile>settings>Developer settings>Personal access
+
+settings>collaborators
+
+브랜치 변경
+git checkout ss
+
+https://github.com/UB-Mannheim/tesseract/wiki
