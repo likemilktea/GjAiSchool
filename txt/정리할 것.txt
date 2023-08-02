@@ -1,7 +1,7 @@
 
 git init - 깃 드라이브 설정
 
-staging area
+staging area 
 git add ./Test.html
 git commit -m '내용'
 git push origin master
@@ -23,3 +23,5 @@ settings>collaborators
 git checkout ss
 
 https://github.com/UB-Mannheim/tesseract/wiki
+
+ git remote add origin https://github.com/2023-AISCHOOL-APP/araboraGJapt.git
