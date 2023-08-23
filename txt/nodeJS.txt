@@ -1,0 +1,12 @@
+nodeJS
+
+nodeJs 특징
+
+1.콜백함수란? 함수 안에 함수
+call back : 이벤트 기반으로 특정한 시점에 호출되는 함수
+
+2.비동기 None Blocking
+
+3.싱글스레드
+
+4.NPM
