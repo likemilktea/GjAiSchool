@@ -44,12 +44,26 @@ const express = require('express')
 // 2. express를 실행시켜줄 준비
 const app = express()
 
+// port 번호를 기본 포트로 저장하는 방법
+app.set('port', process.env.PORT || 3333)
+
+// 정적인 파일을 클라이언트에게 상대적 경로로 바로 응답x
+// 미들웨어를 하나 거쳐서 절대경로를 만들어주는 것
+// public이라는 폴더에 정적인 파일들을 두고 사용한다!
+app.use(express.static(__dirname+'/public'))
+
 // 3. 라우팅에 따른 서버 열어주기
 app.get('/',(req,res)=>{
     console.log('server start!');
+
+    // case1 ) 단순 문자 응답하기 .send()
+    //res.send('Hello World!')
+
+    // case2 ) html 문서를 응답하기 .sendFile()
+    res.sendFile(__dirname+'/public/ex01.html');
 })
 
 // 4. 포트 번호 대기 (단, app.listen이 가장 하단에 존재)
-app.listen(3333,()=>{
+app.listen(app.get('port'),()=>{
     console.log('3333포트에서 대기 중');
 })

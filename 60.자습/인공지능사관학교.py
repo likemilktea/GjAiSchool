@@ -1,16 +1,25 @@
-import sys
-sysinput = sys.stdin.readline
+n = int(input())
+inp = []
+sta = []
+for i in range(n):
+    inp.append(input())
 
-N,M = map(int,sysinput().split())
+for i in inp:
+    if i[:4] == "push":
+        sta.append(i[5:])
 
-Nlist = [sysinput().rstrip() for i in range(N)]
-Ndict = {key+1 : value for key, value in enumerate(Nlist)}
-NdictSwap = {key : value+1 for value, key in enumerate(Nlist)}
+    elif i == 'pop':
+        if len(sta)>0:
+            print(sta[0])
+            del sta[0]
+        else:
+            print("-1")
+            
+    elif i == 'size':
+        print(len(sta))
 
-Mlist = [sysinput().rstrip() for i in range(M)]
-print('=======================')
-for key in Mlist:
-    if key.isdigit():
-        print(Ndict[int(key)])
-    else:
-        print(NdictSwap[key])
+    elif i == 'empty':
+        print('1' if len(sta)==0 else '0')
+
+    elif i == 'top':
+        print('-1' if len(sta)==0 else sta[0])

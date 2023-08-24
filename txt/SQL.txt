@@ -1,0 +1,10 @@
+
+to_char() 문자로
+to_date() 날짜로
+
+IN
+LIKE
+BETWEEN 사이에
+IS NULL NULL인가
+
+SYSDATE
